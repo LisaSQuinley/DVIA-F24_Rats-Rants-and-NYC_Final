@@ -238,7 +238,7 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 // need to think about this, not sure if I want borough boundaries
-d3.json("/data/Borough-Boundaries.geojson").then(function (geojsonData) {
+d3.json("./data/Borough-Boundaries.geojson").then(function (geojsonData) {
   // Define the borough color mapping
   const boroughColorMapping = {
     Manhattan: "#EE352E",
@@ -426,7 +426,7 @@ const BarYGlobalMax = 16000;
 
 /* 
 // the original code for the zip code areas
-d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(function(geojsonData) {
+d3.json('./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(function(geojsonData) {
     // Add GeoJSON layer with styling
     L.geoJSON(geojsonData, {
       style: function (feature) {
@@ -916,7 +916,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2017.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -1946,7 +1946,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2018.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -2973,7 +2973,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2019.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -4001,7 +4001,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2020.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -5032,7 +5032,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2021.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -6060,7 +6060,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2022.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -7089,7 +7089,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2023.addData(geojsonData); // Add the GeoJSON data to the layer
         }
@@ -8116,7 +8116,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       });
 
       // Load GeoJSON shapes for zip codes
-      d3.json("/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
         function (geojsonData) {
           zipCodeGeoJSONLayer2024.addData(geojsonData); // Add the GeoJSON data to the layer
         }

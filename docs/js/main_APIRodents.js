@@ -6,7 +6,7 @@
 const body = d3.select("body").style("padding", "20px 30px 0px 30px");
 
 body
-  .style("background-image", "url('/assets/cheese-holes-reverse.svg')") // Set background image
+  .style("background-image", "url('../assets/cheese-holes-reverse.svg')") // Set background image
   .style("background-size", "cover") // Optional: Ensures the background image covers the entire div
   .style("background-position", "center") // Optional: Centers the background image within the div
   .style("background-repeat", "no-repeat"); // Optional: Prevents background from repeating
@@ -68,7 +68,7 @@ const Descriptions = body
   });
 
 /*   Descriptions
-  .style("background-image", "url('/assets/cheese-holes-light.svg')")
+  .style("background-image", "url('../assets/cheese-holes-light.svg')")
   .style("background-position", "center")
   .style("background-size", "cover")
   .style("background-repeat", "no-repeat"); */
@@ -273,14 +273,14 @@ const legend = L.control({ position: "topleft" });
 
 // Define categories with labels and assets (SVG/PNG)
 const categories = [
-  { label: "Rat Sighting", image: "/assets/rat.svg", icon: "" },
-  { label: "Mouse Sighting", image: "/assets/mouse.svg", icon: "" },
+  { label: "Rat Sighting", image: "../assets/rat.svg", icon: "" },
+  { label: "Mouse Sighting", image: "../assets/mouse.svg", icon: "" },
   {
     label: "Condition Attracting Rodents",
-    image: "/assets/cheese.svg",
+    image: "../assets/cheese.svg",
     icon: "",
   },
-  { label: "Signs of Rodents", image: "/assets/signs.svg", icon: "" },
+  { label: "Signs of Rodents", image: "../assets/signs.svg", icon: "" },
   {
     label: "More than 750 Complaints",
     color: "darkgoldenrod",
@@ -573,7 +573,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "../assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -795,7 +795,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "../assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -803,7 +803,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "../assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -811,7 +811,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "../assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -819,7 +819,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "../assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -1352,7 +1352,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "../assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -1600,7 +1600,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "../assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -1825,7 +1825,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "../assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -1833,7 +1833,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "../assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -1841,7 +1841,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "../assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -1849,7 +1849,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "../assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -2381,7 +2381,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "../assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -2628,7 +2628,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "../assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -2851,7 +2851,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "./assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -2859,7 +2859,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "./assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -2867,7 +2867,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "./assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -2875,7 +2875,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "./assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -3408,7 +3408,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -3656,7 +3656,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "./assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -3879,7 +3879,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "./assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -3887,7 +3887,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "./assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -3895,7 +3895,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "./assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -3903,7 +3903,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "./assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -4436,7 +4436,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -4684,7 +4684,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "./assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -4907,7 +4907,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "./assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -4915,7 +4915,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "./assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -4923,7 +4923,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "./assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -4931,7 +4931,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "./assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -5467,7 +5467,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -5715,7 +5715,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "./assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -5938,7 +5938,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "./assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -5946,7 +5946,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "./assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -5954,7 +5954,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "./assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -5962,7 +5962,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "./assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -6496,7 +6496,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -6744,7 +6744,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "./assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -6967,7 +6967,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "./assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -6975,7 +6975,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "./assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -6983,7 +6983,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "./assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -6991,7 +6991,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "./assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -7524,7 +7524,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 
@@ -7772,7 +7772,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
       .attr("width", 2)
       .attr("height", 2)
       .append("image")
-      .attr("href", "/assets/squareCheese.svg") // Path to the SVG image
+      .attr("href", "./assets/squareCheese.svg") // Path to the SVG image
       .attr("width", 300)
       .attr("height", 300);
 
@@ -7995,7 +7995,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         switch (descriptor) {
           case "Condition Attracting Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/cheese.svg", // CHEESE
+              iconUrl: "./assets/cheese.svg", // CHEESE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -8003,7 +8003,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Rat Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/rat.svg", // RAT
+              iconUrl: "./assets/rat.svg", // RAT
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -8011,7 +8011,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Mouse Sighting":
             markerIcon = L.icon({
-              iconUrl: "/assets/mouse.svg", // MOUSE
+              iconUrl: "./assets/mouse.svg", // MOUSE
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -8019,7 +8019,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
             break;
           case "Signs of Rodents":
             markerIcon = L.icon({
-              iconUrl: "/assets/signs.svg", // SIGNS
+              iconUrl: "./assets/signs.svg", // SIGNS
               iconSize: [32, 32],
               iconAnchor: [16, 32],
               popupAnchor: [0, -32],
@@ -8555,7 +8555,7 @@ d3.json('/data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(funct
         .attr("width", 2)
         .attr("height", 2)
         .append("image")
-        .attr("href", "/assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
         .attr("width", 1800)
         .attr("height", 1800);
 

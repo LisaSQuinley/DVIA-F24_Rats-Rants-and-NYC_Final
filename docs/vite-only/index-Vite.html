@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lexend+Deca:wght@100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/leaflet.legend.css">
+  <script src="/js/leaflet.legend.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.css" />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.js"></script>
+  <script src="https://unpkg.com/textures@1.2.0/dist/textures.js"></script>
+  <script type="module" src="https://cdn.skypack.dev/@material/web/all.js"></script>
+  <link rel="stylesheet" href="https://cdn.skypack.dev/@material/web/typography/md-typescale-styles.css">
+  <script type="module">
+    import '@material/web/all.js';
+    import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+  </script>
+  <title>Rats, Rants, and N.Y.C.</title>
+</head>
+
+<body>
+
+  <div id="loading">
+    <!-- SVG that moves across the screen -->
+    <img src="./assets/Rodent-Chasing-Cheese.svg" alt="Rodent Chasing Cheese" class="moving-spinner"/>
+
+  </div>
+
+  <div id="app"></div>
+  <script type="module" src="/js/main_APIRodents.js"></script>
+
+
+  <script>
+    // Check network status (optional)
+    if ('connection' in navigator) {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  
+      // Show loading message based on network type
+      if (connection.downlink < 1) {
+        // User is on a slow connection
+        document.getElementById('loading').innerHTML = "<h2>Loading... (slow connection)</h2>";
+      }
+    }
+  
+    // Show loading screen until the page is loaded
+    window.addEventListener('load', function() {
+      // Stay on loading screen for 5 seconds
+      setTimeout(function() {
+        document.getElementById('loading').style.display = 'none'; // Hide loading screen
+        document.getElementById('app').style.display = 'block'; // Show main content
+      }, 10000); // Delay for 5000 milliseconds (5 seconds)
+    });
+  </script>
+</body>
+
+</html>

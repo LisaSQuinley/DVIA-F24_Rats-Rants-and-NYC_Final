@@ -1,0 +1,247 @@
+@import url("https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.12/latin.css");
+
+body,
+.leaflet-container,
+.leaflet-control,
+.leaflet-popup-content,
+.leaflet-marker-icon,
+.leaflet-control-attribution,
+.leaflet-markercluster {
+	font-family: "Lexend Deca", sans-serif;
+}
+
+header {
+	width: 100%;
+	padding-bottom: 5px;
+}
+
+#footer {
+	width: 100%;
+}
+
+#leftFooter {
+	float: left;
+	width: 50%;
+}
+
+#rightFooter {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+.cheese-group {
+	margin-bottom: 15px;
+}
+
+/* Loading screen container */
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../assets/cheese-holes_loading.svg');
+	background-size: cover;
+	/* background-color: rgba(218, 165, 32, 0.9); */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.moving-spinner {
+	animation: moveAcross 15s linear infinite;
+	/* Animation to move the image */
+	max-width: 90%;
+	/* Ensure the image width doesn't exceed the viewport */
+	height: auto;
+	/* Maintain aspect ratio */
+}
+
+/* Keyframes to move the image from right to left */
+@keyframes moveAcross {
+	0% {
+		transform: translateX(0);
+	}
+
+	50% {
+		transform: translateX(50%);
+	}
+
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+/* Main content */
+#app {
+	display: none;
+	/* Initially hidden */
+}
+
+
+
+h1 {
+	font-weight: 900;
+	font-size: 38px;
+	margin-top: 0;
+	margin-bottom: 0;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+h2 {
+	margin-top: 5px;
+	margin-bottom: 0px;
+	font-size: 20px;
+	font-weight: light;
+	display: inline-block;
+	margin-right: 10px;
+	/* color: darkgoldenrod; */
+}
+
+h3 {
+	font-size: 16px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	/* color: darkgoldenrod; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+}
+#Descriptions h3 {
+	padding: 0.5rem 0 1rem 0;
+	margin: 0;
+	font-size: 24px;
+	font-weight: 600;
+}
+#Descriptions p {
+	line-height: 1.5;
+	padding: 0.5rem 0 1rem 0;
+	margin: 0;
+	font-size: 18px;
+	font-weight: 300;
+}
+p {
+	padding: 0.5rem 0 1rem 0;
+	margin: 0;
+}
+
+a {
+	color: #666666;
+}
+
+h6 {
+	font-weight: 400;
+	line-height: 1.25;
+	color: goldenrod;
+}
+
+main {
+	padding: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+:root {
+	--md-sys-color-primary: gold;
+	--md-radio-icon-size: 16px;
+	--md-radio-hover-icon-color: palegoldenrod;
+	--md-radio-hover-state-layer-color: goldenrod;
+	--md-radio-icon-color: darkgoldenrod;
+	--md-radio-pressed-icon-color: darkgoldenrod;
+}
+
+.leaflet-top.leaflet-left {
+	top: 20px;
+	/* Adjust this value based on the height of your title */
+}
+
+.marker-cluster-small {
+	background-color: whitesmoke;
+}
+
+.marker-cluster-small div {
+	background-color: palegoldenrod;
+}
+
+.marker-cluster-medium {
+	background-color: palegoldenrod;
+}
+
+.marker-cluster-medium div {
+	background-color: gold;
+}
+
+.marker-cluster-large {
+	background-color: gold;
+}
+
+.marker-cluster-large div {
+	background-color: goldenrod;
+}
+
+.marker-cluster div {
+	font: 12px "Lexend Deca", sans-serif;
+}
+
+.Rat-Sighting .leaflet-popup-content-wrapper,
+.Rat-Sighting .leaflet-popup-tip {
+	background-color: black;
+	/* Change the background color */
+	border: 1px solid white;
+}
+
+.Rat-Sighting .leaflet-popup-content {
+	color: white;
+	font-size: 15px;
+	/* Change the text color */
+}
+
+.Mouse-Sighting .leaflet-popup-content-wrapper,
+.Mouse-Sighting .leaflet-popup-tip {
+	background-color: #d1d3d4;
+	/* Change the background color */
+	border: 1px solid white;
+}
+
+.Mouse-Sighting .leaflet-popup-content {
+	color: black;
+	font-size: 15px;
+	/* Change the text color */
+}
+
+.Condition-Attracting-Rodents .leaflet-popup-content-wrapper,
+.Condition-Attracting-Rodents .leaflet-popup-tip {
+	background-color: #fee459;
+	/* Change the background color */
+	border: 1px solid white;
+}
+
+.Condition-Attracting-Rodents .leaflet-popup-content {
+	color: black;
+	font-size: 15px;
+	/* Change the text color */
+}
+
+.Signs-of-Rodents .leaflet-popup-content-wrapper,
+.Signs-of-Rodents .leaflet-popup-tip {
+	background-color: #f1de00;
+	/* Change the background color */
+	border: 1px solid black;
+}
+
+.Signs-of-Rodents .leaflet-popup-content {
+	color: black;
+	font-size: 15px;
+	/* Change the text color */
+}

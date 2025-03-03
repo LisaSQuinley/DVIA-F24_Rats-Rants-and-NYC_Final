@@ -17,7 +17,7 @@ const title = header.append("h1").text("Rats, Rants, and New York City");
 
 const subtitle = header.append("h2").text("Surviving the City: Urban Rodent Woes");
 
-const subsubtitle = header.append("h3").text(" (2017-2024)");
+const subsubtitle = header.append("h3").text(" (2017-2025)");
 
 const cheeseRadios = header
   .append("form")
@@ -28,7 +28,7 @@ const cheeseRadios = header
   .style("float", "left")
   .style("flex-wrap", "wrap") // Allow the items to wrap when the window is resized
   .selectAll("div")
-  .data(["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"])
+  .data(["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"])
   .enter()
   .append("div")
   .attr("class", function (d) {
@@ -67,11 +67,6 @@ const Descriptions = body
     d3.select(this).style("display", "none");
   });
 
-/*   Descriptions
-  .style("background-image", "url('./assets/cheese-holes-light.svg')")
-  .style("background-position", "center")
-  .style("background-size", "cover")
-  .style("background-repeat", "no-repeat"); */
 
 // container for the charts only
 const ChartDescriptions = Descriptions.append("div")
@@ -400,7 +395,7 @@ const rightFooter = footer
     "Data Sources: 311 NYC Open Data 2010 to Present - Rodent Complaints, Modified Zip Code Tabulation Areas (MODZCTA), MTA Colors, Vecteezy.com"
   );
 
-d3.select("md-radio[value='2024']").property("checked", true);
+d3.select("md-radio[value='2025']").property("checked", true);
 
 d3.selectAll("md-radio").on("click", function (event) {
   const selectedYear = event.target.value;
@@ -449,7 +444,9 @@ d3.json('./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(func
 
 (async function Rodents2017() {
   const url2017 =
-    "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$query=SELECT%0A%20%20%60unique_key%60%2C%0A%20%20%60created_date%60%2C%0A%20%20%60closed_date%60%2C%0A%20%20%60agency%60%2C%0A%20%20%60agency_name%60%2C%0A%20%20%60complaint_type%60%2C%0A%20%20%60descriptor%60%2C%0A%20%20%60location_type%60%2C%0A%20%20%60incident_zip%60%2C%0A%20%20%60incident_address%60%2C%0A%20%20%60street_name%60%2C%0A%20%20%60cross_street_1%60%2C%0A%20%20%60cross_street_2%60%2C%0A%20%20%60intersection_street_1%60%2C%0A%20%20%60intersection_street_2%60%2C%0A%20%20%60address_type%60%2C%0A%20%20%60city%60%2C%0A%20%20%60landmark%60%2C%0A%20%20%60facility_type%60%2C%0A%20%20%60status%60%2C%0A%20%20%60due_date%60%2C%0A%20%20%60resolution_description%60%2C%0A%20%20%60resolution_action_updated_date%60%2C%0A%20%20%60community_board%60%2C%0A%20%20%60bbl%60%2C%0A%20%20%60borough%60%2C%0A%20%20%60x_coordinate_state_plane%60%2C%0A%20%20%60y_coordinate_state_plane%60%2C%0A%20%20%60open_data_channel_type%60%2C%0A%20%20%60park_facility_name%60%2C%0A%20%20%60park_borough%60%2C%0A%20%20%60vehicle_type%60%2C%0A%20%20%60taxi_company_borough%60%2C%0A%20%20%60taxi_pick_up_location%60%2C%0A%20%20%60bridge_highway_name%60%2C%0A%20%20%60bridge_highway_direction%60%2C%0A%20%20%60road_ramp%60%2C%0A%20%20%60bridge_highway_segment%60%2C%0A%20%20%60latitude%60%2C%0A%20%20%60longitude%60%2C%0A%20%20%60location%60%0AWHERE%0A%20%20caseless_one_of(%60complaint_type%60%2C%20%22Rodent%22)%0A%20%20AND%20(%60created_date%60%0A%20%20%20%20%20%20%20%20%20BETWEEN%20%222017-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20%20%20%20%20%20AND%20%222017-12-31T11%3A59%3A59%22%20%3A%3A%20floating_timestamp)%0AORDER%20BY%20%60created_date%60%20DESC%20NULL%20FIRST%0ALIMIT%20100000%20OFFSET%200";
+    "./data/Rodents2017.json";
+
+//    "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$query=SELECT%0A%20%20%60unique_key%60%2C%0A%20%20%60created_date%60%2C%0A%20%20%60closed_date%60%2C%0A%20%20%60agency%60%2C%0A%20%20%60agency_name%60%2C%0A%20%20%60complaint_type%60%2C%0A%20%20%60descriptor%60%2C%0A%20%20%60location_type%60%2C%0A%20%20%60incident_zip%60%2C%0A%20%20%60incident_address%60%2C%0A%20%20%60street_name%60%2C%0A%20%20%60cross_street_1%60%2C%0A%20%20%60cross_street_2%60%2C%0A%20%20%60intersection_street_1%60%2C%0A%20%20%60intersection_street_2%60%2C%0A%20%20%60address_type%60%2C%0A%20%20%60city%60%2C%0A%20%20%60landmark%60%2C%0A%20%20%60facility_type%60%2C%0A%20%20%60status%60%2C%0A%20%20%60due_date%60%2C%0A%20%20%60resolution_description%60%2C%0A%20%20%60resolution_action_updated_date%60%2C%0A%20%20%60community_board%60%2C%0A%20%20%60bbl%60%2C%0A%20%20%60borough%60%2C%0A%20%20%60x_coordinate_state_plane%60%2C%0A%20%20%60y_coordinate_state_plane%60%2C%0A%20%20%60open_data_channel_type%60%2C%0A%20%20%60park_facility_name%60%2C%0A%20%20%60park_borough%60%2C%0A%20%20%60vehicle_type%60%2C%0A%20%20%60taxi_company_borough%60%2C%0A%20%20%60taxi_pick_up_location%60%2C%0A%20%20%60bridge_highway_name%60%2C%0A%20%20%60bridge_highway_direction%60%2C%0A%20%20%60road_ramp%60%2C%0A%20%20%60bridge_highway_segment%60%2C%0A%20%20%60latitude%60%2C%0A%20%20%60longitude%60%2C%0A%20%20%60location%60%0AWHERE%0A%20%20caseless_one_of(%60complaint_type%60%2C%20%22Rodent%22)%0A%20%20AND%20(%60created_date%60%0A%20%20%20%20%20%20%20%20%20BETWEEN%20%222017-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20%20%20%20%20%20AND%20%222017-12-31T11%3A59%3A59%22%20%3A%3A%20floating_timestamp)%0AORDER%20BY%20%60created_date%60%20DESC%20NULL%20FIRST%0ALIMIT%20100000%20OFFSET%200";
 
   try {
 
@@ -7648,7 +7645,7 @@ d3.json('./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(func
 
 (async function Rodents2024() {
   const url2024 =
-    "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$query=SELECT%0A%20%20%60unique_key%60%2C%0A%20%20%60created_date%60%2C%0A%20%20%60closed_date%60%2C%0A%20%20%60agency%60%2C%0A%20%20%60agency_name%60%2C%0A%20%20%60complaint_type%60%2C%0A%20%20%60descriptor%60%2C%0A%20%20%60location_type%60%2C%0A%20%20%60incident_zip%60%2C%0A%20%20%60incident_address%60%2C%0A%20%20%60street_name%60%2C%0A%20%20%60cross_street_1%60%2C%0A%20%20%60cross_street_2%60%2C%0A%20%20%60intersection_street_1%60%2C%0A%20%20%60intersection_street_2%60%2C%0A%20%20%60address_type%60%2C%0A%20%20%60city%60%2C%0A%20%20%60landmark%60%2C%0A%20%20%60facility_type%60%2C%0A%20%20%60status%60%2C%0A%20%20%60due_date%60%2C%0A%20%20%60resolution_description%60%2C%0A%20%20%60resolution_action_updated_date%60%2C%0A%20%20%60community_board%60%2C%0A%20%20%60bbl%60%2C%0A%20%20%60borough%60%2C%0A%20%20%60x_coordinate_state_plane%60%2C%0A%20%20%60y_coordinate_state_plane%60%2C%0A%20%20%60open_data_channel_type%60%2C%0A%20%20%60park_facility_name%60%2C%0A%20%20%60park_borough%60%2C%0A%20%20%60vehicle_type%60%2C%0A%20%20%60taxi_company_borough%60%2C%0A%20%20%60taxi_pick_up_location%60%2C%0A%20%20%60bridge_highway_name%60%2C%0A%20%20%60bridge_highway_direction%60%2C%0A%20%20%60road_ramp%60%2C%0A%20%20%60bridge_highway_segment%60%2C%0A%20%20%60latitude%60%2C%0A%20%20%60longitude%60%2C%0A%20%20%60location%60%0AWHERE%0A%20%20caseless_one_of(%60complaint_type%60%2C%20%22Rodent%22)%0A%20%20AND%20(%60created_date%60%0A%20%20%20%20%20%20%20%20%20BETWEEN%20%222024-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20%20%20%20%20%20AND%20%222024-12-31T23%3A59%3A59%22%20%3A%3A%20floating_timestamp)%0AORDER%20BY%20%60created_date%60%20DESC%20NULL%20FIRST%0ALIMIT%20100000%20OFFSET%200";
+    "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$query=SELECT%0A%20%20%60unique_key%60%2C%0A%20%20%60created_date%60%2C%0A%20%20%60closed_date%60%2C%0A%20%20%60agency%60%2C%0A%20%20%60agency_name%60%2C%0A%20%20%60complaint_type%60%2C%0A%20%20%60descriptor%60%2C%0A%20%20%60location_type%60%2C%0A%20%20%60incident_zip%60%2C%0A%20%20%60incident_address%60%2C%0A%20%20%60street_name%60%2C%0A%20%20%60cross_street_1%60%2C%0A%20%20%60cross_street_2%60%2C%0A%20%20%60intersection_street_1%60%2C%0A%20%20%60intersection_street_2%60%2C%0A%20%20%60address_type%60%2C%0A%20%20%60city%60%2C%0A%20%20%60landmark%60%2C%0A%20%20%60facility_type%60%2C%0A%20%20%60status%60%2C%0A%20%20%60due_date%60%2C%0A%20%20%60resolution_description%60%2C%0A%20%20%60resolution_action_updated_date%60%2C%0A%20%20%60community_board%60%2C%0A%20%20%60bbl%60%2C%0A%20%20%60borough%60%2C%0A%20%20%60x_coordinate_state_plane%60%2C%0A%20%20%60y_coordinate_state_plane%60%2C%0A%20%20%60open_data_channel_type%60%2C%0A%20%20%60park_facility_name%60%2C%0A%20%20%60park_borough%60%2C%0A%20%20%60vehicle_type%60%2C%0A%20%20%60taxi_company_borough%60%2C%0A%20%20%60taxi_pick_up_location%60%2C%0A%20%20%60bridge_highway_name%60%2C%0A%20%20%60bridge_highway_direction%60%2C%0A%20%20%60road_ramp%60%2C%0A%20%20%60bridge_highway_segment%60%2C%0A%20%20%60latitude%60%2C%0A%20%20%60longitude%60%2C%0A%20%20%60location%60%0AWHERE%0A%20%20caseless_one_of(%60complaint_type%60%2C%20%22Rodent%22)%0A%20%20AND%20(%60created_date%60%0A%20%20%20%20%20%20%20%20%20BETWEEN%20%222024-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20%20%20%20%20%20AND%20%222024-12-31T11%3A59%3A59%22%20%3A%3A%20floating_timestamp)%0AORDER%20BY%20%60created_date%60%20DESC%20NULL%20FIRST%0ALIMIT%20100000%20OFFSET%200";
 
   try {
 
@@ -8035,24 +8032,25 @@ d3.json('./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(func
           icon: markerIcon,
         });
         const popupContent = `
-      <div style="display:flex;flex-direction:column;justify-content:center;">
-        <div style="margin:0 auto;font-weight:600;">${descriptor}</div>
-        <div style="margin:0 auto;font-weight:400;">
-          ${new Date(created_date).toLocaleDateString("en-US", {
+        <div style="display:flex;flex-direction:column;justify-content:center;">
+          <div style="margin:0 auto;font-weight:600;">${descriptor}</div>
+          <div style="margin:0 auto;font-weight:400;">
+            ${new Date(created_date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         })}
-        </div>
-        <div style="margin:0 auto;font-weight:400;">${location_type}</div>
-        <div style="margin:0 auto;font-weight:400;">${borough
+          </div>
+          <div style="margin:0 auto;font-weight:400;">${location_type}</div>
+          <div style="margin:0 auto;font-weight:400;">${borough
             .split(" ")
             .map(
-              (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+              (word) =>
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
             )
             .join(" ")}, ${incident_zip}</div>
-      </div>
-    `;
+        </div>
+      `;
 
         let cleanDescriptor = descriptor.replace(/\s+/g, "-");
         marker.bindPopup(popupContent, { className: cleanDescriptor });
@@ -8130,13 +8128,9 @@ d3.json('./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(func
       layerControl.addOverlay(markerClusterLayer2024, "2024 Rodent Complaints");
       layerControl.addOverlay(zipCodeGeoJSONLayer2024, "2024 Zip Codes");
 
-      activeLayers.push("2024 Rodent Complaints");
-      activeLayers.push("2024 Zip Codes");
-
-      map.addLayer(markerClusterLayer2024);
-      map.addLayer(zipCodeGeoJSONLayer2024);
-
-      updateTitle(activeLayers);
+      // Optionally, add the layers to the map
+      // map.addLayer(markerClusterLayer); // Add the marker clusters layer by default
+      // map.addLayer(zipCodeGeoJSONLayer); // Add the zip code areas layer by default
 
       map.on('layeradd', function (e) {
         if (e.layer === markerClusterLayer2024) {
@@ -8668,66 +8662,1049 @@ d3.json('./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson').then(func
     console.error("Error loading or processing data for 2024:", error);
   }
 
+
+  d3.selectAll(".rodents-2024").style("display", "none");
+
 })();
 
 
-/* 
-async function CHEESE() {
+
+
+
+/* ----- */
+/* -------------------------------------- ALL API QUERIES AND VISUALIZATIONS SPECIFIC TO 2025 -------------------------------------- */
+/* ----- */
+
+(async function Rodents2025() {
+  const url2025 =
+    "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$query=SELECT%0A%20%20%60unique_key%60%2C%0A%20%20%60created_date%60%2C%0A%20%20%60closed_date%60%2C%0A%20%20%60agency%60%2C%0A%20%20%60agency_name%60%2C%0A%20%20%60complaint_type%60%2C%0A%20%20%60descriptor%60%2C%0A%20%20%60location_type%60%2C%0A%20%20%60incident_zip%60%2C%0A%20%20%60incident_address%60%2C%0A%20%20%60street_name%60%2C%0A%20%20%60cross_street_1%60%2C%0A%20%20%60cross_street_2%60%2C%0A%20%20%60intersection_street_1%60%2C%0A%20%20%60intersection_street_2%60%2C%0A%20%20%60address_type%60%2C%0A%20%20%60city%60%2C%0A%20%20%60landmark%60%2C%0A%20%20%60facility_type%60%2C%0A%20%20%60status%60%2C%0A%20%20%60due_date%60%2C%0A%20%20%60resolution_description%60%2C%0A%20%20%60resolution_action_updated_date%60%2C%0A%20%20%60community_board%60%2C%0A%20%20%60bbl%60%2C%0A%20%20%60borough%60%2C%0A%20%20%60x_coordinate_state_plane%60%2C%0A%20%20%60y_coordinate_state_plane%60%2C%0A%20%20%60open_data_channel_type%60%2C%0A%20%20%60park_facility_name%60%2C%0A%20%20%60park_borough%60%2C%0A%20%20%60vehicle_type%60%2C%0A%20%20%60taxi_company_borough%60%2C%0A%20%20%60taxi_pick_up_location%60%2C%0A%20%20%60bridge_highway_name%60%2C%0A%20%20%60bridge_highway_direction%60%2C%0A%20%20%60road_ramp%60%2C%0A%20%20%60bridge_highway_segment%60%2C%0A%20%20%60latitude%60%2C%0A%20%20%60longitude%60%2C%0A%20%20%60location%60%0AWHERE%0A%20%20caseless_one_of(%60complaint_type%60%2C%20%22Rodent%22)%0A%20%20AND%20(%60created_date%60%0A%20%20%20%20%20%20%20%20%20BETWEEN%20%222025-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20%20%20%20%20%20AND%20%222025-12-31T23%3A59%3A59%22%20%3A%3A%20floating_timestamp)%0AORDER%20BY%20%60created_date%60%20DESC%20NULL%20FIRST%0ALIMIT%20100000%20OFFSET%200";
+
   try {
-    // Call all the Rodents data functions
-    await Promise.all([
-      Rodents2017(),
-      Rodents2018(),
-      Rodents2019(),
-      Rodents2020(),
-      Rodents2021(),
-      Rodents2022(),
-      Rodents2023(),
-      Rodents2024()
-    ]);
-    console.log("All Rodents data loaded.");
+
+    const json2025 = await d3.json(url2025);
+    // there were 31615 rows in 2025
+    console.log("2025:", json2025);
+
+    const stackedData2025 = d3.rollup(
+      json2025.filter(
+        (d) =>
+          d.borough &&
+          d.borough.toLowerCase() !== "undefined" &&
+          d.borough.toLowerCase() !== "unspecified"
+      ),
+      (v) =>
+        d3.rollup(
+          v,
+          (group) => group.length,
+          (d) => d.descriptor
+        ),
+      (d) => d.borough
+    );
+
+    console.log(
+      "Stacked Bar Chart by Count of Descriptor per Borough 2025:",
+      stackedData2025
+    );
+
+    const boroughsBar = Array.from(stackedData2025, ([borough, descriptors]) => ({
+      borough,
+      descriptors: Array.from(descriptors, ([descriptor, count]) => ({
+        descriptor,
+        count,
+      })),
+    }));
+
+    boroughsBar.forEach((b) => {
+      b.totalCount = b.descriptors.reduce((sum, desc) => sum + desc.count, 0);
+    });
+
+    const keys = Array.from(
+      new Set(boroughsBar.flatMap((b) => b.descriptors.map((d) => d.descriptor)))
+    );
+
+    const fixedCategories = [
+      "Signs of Rodents",
+      "Condition Attracting Rodents",
+      "Mouse Sighting",
+      "Rat Sighting",
+    ];
+
+    // Extract unique descriptors from the data
+    const allDescriptors = new Set();
+    boroughsBar.forEach((borough) => {
+      borough.descriptors.forEach((descriptor) => {
+        allDescriptors.add(descriptor.descriptor); // Add descriptor to the set
+      });
+    });
+
+    // Convert the set to an array
+    const dynamicCategories = Array.from(allDescriptors);
+
+    // Filter out the fixed categories that are already in the dynamic categories
+    const dynamicCategoriesExcludingFixed = dynamicCategories.filter(
+      (category) => !fixedCategories.includes(category)
+    );
+
+    // Combine the fixed categories with dynamic categories
+    const finalCategories = [
+      ...fixedCategories,
+      ...dynamicCategoriesExcludingFixed,
+    ];
+
+    // Create the stack with the combined order of categories
+    const stack = d3
+      .stack()
+      .keys(finalCategories) // Use the combined fixed + dynamic order
+      .value(
+        (d, key) =>
+          d.descriptors.find((desc) => desc.descriptor === key)?.count || 0
+      );
+
+    const series = stack(boroughsBar);
+    const marginBar = { top: 20, right: 20, bottom: 40, left: 40 };
+    const widthBar = parseInt(d3.select("#stacked-bar-charts").style("width"));
+    const heightBar = parseInt(d3.select("#stacked-bar-charts").style("height"));
+    const maxValueBar = d3.max(series[series.length - 1], (d) => d[1]);
+
+    stackedBarCharts
+      .append("text")
+      .attr("class", "rodents-2025")
+      .attr("x", 0)
+      .attr("y", 20)
+      .attr("font-size", 15)
+      .attr("fill", "black")
+      .style("font-weight", "bold")
+      .text("Counts by Borough and Descriptor in 2025");
+
+    const xScale = d3
+      .scaleBand()
+      .domain(boroughsBar.map((b) => b.borough))
+      .range([marginBar.left, widthBar - marginBar.right])
+      .paddingInner(0.1)
+      .paddingOuter(0.1);
+
+    const yScale = d3
+      .scaleLinear()
+      .domain([0, BarYGlobalMax])
+      //    .domain([0, maxValueBar])
+      .range([heightBar - marginBar.top, marginBar.bottom])
+      .nice();
+
+    // For Bar Chart
+    const BarDefs = d3
+      .select("#stacked-bar-charts")
+      .append("defs")
+      .attr("class", "rodents-2025");
+
+    BarDefs.append("pattern")
+      .attr("id", "cheesePattern-2025") // ID to reference the pattern later for Bar Chart
+      .attr("width", 2)
+      .attr("height", 2)
+      .append("image")
+      .attr("href", "./assets/squareCheese.svg") // Path to the SVG image
+      .attr("width", 300)
+      .attr("height", 300);
+
+    const barDescriptorColors = {
+      "Rat Sighting": "black",
+      "Mouse Sighting": "#d1d3d4",
+      "Condition Attracting Rodents": "url(#cheesePattern-2025)",
+      "Signs of Rodents": "#f1de00",
+    };
+
+    // Example of applying border styles
+    const descriptorBorders = {
+      "Rat Sighting": "1px solid black",
+      "Mouse Sighting": "1px solid gray",
+      "Condition Attracting Rodents": "1px solid black", // Border for SVG image
+      "Signs of Rodents": "1px solid black",
+    };
+
+    // Create your color scale using the descriptor colors
+    const colorScaleBar = d3
+      .scaleOrdinal()
+      .domain(Object.keys(barDescriptorColors)) // Use descriptor keys as the domain
+      .range(Object.values(barDescriptorColors));
+
+    const axes_layer = stackedBarCharts.append("g").attr("class", "rodents-2025");
+    const bars_layer = stackedBarCharts.append("g").attr("class", "rodents-2025");
+
+    const bars = bars_layer
+      .selectAll("g")
+      .data(stack(boroughsBar))
+      .join("g")
+      .attr("fill", (d, i) => colorScaleBar(d.key));
+
+    const stackedTooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "stackedTooltip")
+      .style("background-color", "white")
+      .style("padding", "6px 10px")
+      .style("border", "1px solid #ccc")
+      .style("border-radius", "5px")
+      .style("position", "absolute") // Ensure it's absolutely positioned
+      .style("opacity", 0); // Initially hidden
+
+    // Bars and event listeners
+    bars
+      .selectAll("rect")
+      .data((d) => d)
+      .join("rect")
+      .attr("x", (d) => xScale(d.data.borough))
+      .attr("y", (d) => yScale(d[1]))
+      .attr("height", (d) => yScale(d[0]) - yScale(d[1]))
+      .attr("width", xScale.bandwidth())
+      // THIS PART OF THE CODE IS NOT WORKING. IT WON'T DO THE CORRECT STROKES ON THE BARS, FIX LATER
+      .attr("fill", (d) => barDescriptorColors[d.descriptor]) // Apply the color based on the descriptor
+      .attr("stroke", (d) => descriptorBorders[d.descriptor]) // Apply the border style based on the descriptor
+      .on("mouseover", (event, d) => {
+        const borough = d.data.borough;
+        const descriptor = d.data.descriptors.find(
+          (desc) => desc.count === d[1] - d[0]
+        ).descriptor;
+        const count = d[1] - d[0];
+
+        stackedTooltip
+          .style("opacity", 1)
+          .style("z-index", 6000) // Ensure it's on top
+          .html(
+            `${borough
+              .split(" ")
+              .map(
+                (word) =>
+                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+              )
+              .join(" ")}<br>${descriptor}<br>${d3.format(",")(count)}`
+          )
+          .style("left", `${event.pageX + 10}px`) // Add offset for visibility
+          .style("top", `${event.pageY + 10}px`) // Add offset for visibility
+          .transition()
+          .duration(100);
+
+        // Apply custom styles based on the descriptor
+        switch (descriptor) {
+          case "Condition Attracting Rodents":
+            stackedTooltip
+              .style("background-color", "#fee459")
+              .style("border", "1px solid white")
+              .style("color", "black")
+              .style("line-height", "1.5");
+            break;
+          case "Rat Sighting":
+            stackedTooltip
+              .style("background-color", "black")
+              .style("border", "1px solid white")
+              .style("color", "white")
+              .style("line-height", "1.5");
+            break;
+          case "Mouse Sighting":
+            stackedTooltip
+              .style("background-color", "#d1d3d4")
+              .style("border", "1px solid white")
+              .style("color", "black")
+              .style("line-height", "1.5");
+            break;
+          case "Signs of Rodents":
+            stackedTooltip
+              .style("background-color", "#f1de00")
+              .style("border", "1px solid black")
+              .style("color", "black")
+              .style("line-height", "1.5");
+            break;
+          default:
+            stackedTooltip
+              .style("background-color", "#ffffff") // Default white background
+              .style("border", "1px solid #ccc")
+              .style("color", "#333")
+              .style("line-height", "1.5");
+            break;
+        }
+      })
+      .on("mousemove", (event) => {
+        stackedTooltip
+          .style("left", `${event.pageX + 10}px`) // Add offset for visibility
+          .style("top", `${event.pageY + 10}px`); // Add offset for visibility
+      })
+      .on("mouseout", () => {
+        stackedTooltip.transition().duration(100).style("opacity", 0); // Hide tooltip
+      });
+
+    // Total Count text labels
+    bars_layer
+      .selectAll("text")
+      .data(boroughsBar)
+      .join("text")
+      .attr("x", (b) => xScale(b.borough) + xScale.bandwidth() / 2)
+      .attr("y", (b) => yScale(b.totalCount) - 5)
+      .attr("text-anchor", "middle")
+      .html((b) => `Total: ${new Intl.NumberFormat().format(b.totalCount)}`)
+      .style("font-size", "10px");
+
+    axes_layer
+      .append("g")
+      .call(d3.axisLeft(yScale))
+      .style("font-family", "Lexend Deca")
+      .attr("transform", `translate(${marginBar.left}, 0)`);
+
+    axes_layer
+      .append("g")
+      .call(d3.axisBottom(xScale))
+      .style("font-family", "Lexend Deca")
+      .attr("transform", `translate(0, ${heightBar - marginBar.top})`);
+
+    // gotta love stack overflow solving problems for me https://stackoverflow.com/questions/63838288/convert-json-to-geojson-frontend
+
+    const APIUrl2025 = url2025;
+    getData2025();
+
+    map.createPane("Zip2025Pane");
+    map.getPane("Zip2025Pane").style.zIndex = 20;
+
+    async function getData2025() {
+      let mygeojson2025 = { type: "FeatureCollection", features: [] };
+      const zipMarkerCount = {}; // Object to keep track of the marker counts by zip code
+      const zipClusters = {}; // To hold the marker clusters by zip code
+
+      // Fetch and parse the data
+      const Points2025 = await fetch(APIUrl2025)
+        .then((response) => response.json())
+        .then((data) => {
+          for (let point of data) {
+            // Ensure latitude and longitude are valid
+            if (!point.latitude || !point.longitude) {
+              continue;
+            }
+
+            // Convert to a GeoJSON feature
+            let coordinate = [
+              parseFloat(point.longitude),
+              parseFloat(point.latitude),
+            ];
+            let properties = point;
+            delete properties.longitude;
+            delete properties.latitude;
+
+            let feature = {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: coordinate,
+              },
+              properties: properties,
+            };
+            mygeojson2025.features.push(feature);
+
+            // Count the markers by zip code
+            const zipCode = point.incident_zip;
+            if (zipCode) {
+              if (!zipMarkerCount[zipCode]) {
+                zipMarkerCount[zipCode] = 0;
+              }
+              zipMarkerCount[zipCode]++;
+            }
+          }
+        });
+
+      console.log("GeoJson 2025 All Points:", mygeojson2025);
+      console.log("2025 Marker Counts by Zip Code:", zipMarkerCount);
+
+      // Create the marker clusters
+      for (const feature of mygeojson2025.features) {
+        const { coordinates } = feature.geometry;
+        const { descriptor, created_date, borough, incident_zip, location_type } =
+          feature.properties;
+
+        if (!incident_zip) {
+          continue;
+        }
+
+        // Define the marker icon based on descriptor
+        let markerIcon;
+        switch (descriptor) {
+          case "Condition Attracting Rodents":
+            markerIcon = L.icon({
+              iconUrl: "./assets/cheese.svg", // CHEESE
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
+            });
+            break;
+          case "Rat Sighting":
+            markerIcon = L.icon({
+              iconUrl: "./assets/rat.svg", // RAT
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
+            });
+            break;
+          case "Mouse Sighting":
+            markerIcon = L.icon({
+              iconUrl: "./assets/mouse.svg", // MOUSE
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
+            });
+            break;
+          case "Signs of Rodents":
+            markerIcon = L.icon({
+              iconUrl: "./assets/signs.svg", // SIGNS
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
+            });
+            break;
+          default:
+            markerIcon = null; // Leaflet's default marker
+            break;
+        }
+
+        // Create the marker with the appropriate icon
+        const marker = L.marker([coordinates[1], coordinates[0]], {
+          icon: markerIcon,
+        });
+        const popupContent = `
+      <div style="display:flex;flex-direction:column;justify-content:center;">
+        <div style="margin:0 auto;font-weight:600;">${descriptor}</div>
+        <div style="margin:0 auto;font-weight:400;">
+          ${new Date(created_date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+        </div>
+        <div style="margin:0 auto;font-weight:400;">${location_type}</div>
+        <div style="margin:0 auto;font-weight:400;">${borough
+            .split(" ")
+            .map(
+              (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            )
+            .join(" ")}, ${incident_zip}</div>
+      </div>
+    `;
+
+        let cleanDescriptor = descriptor.replace(/\s+/g, "-");
+        marker.bindPopup(popupContent, { className: cleanDescriptor });
+
+        // Add the marker to the corresponding zip cluster
+        if (!zipClusters[incident_zip]) {
+          zipClusters[incident_zip] = L.markerClusterGroup();
+        }
+        zipClusters[incident_zip].addLayer(marker);
+      }
+
+      const markerClusterLayer2025 = L.layerGroup();
+
+      markerClusterLayer2025.onAdd = function (map) {
+        // Add a class to the layer's container when it is added to the map
+        this._map._container.classList.add("Rodents-2025-Cluster");
+        L.LayerGroup.prototype.onAdd.call(this, map); // Call the parent method to ensure the layer is added correctly
+      };
+
+      // Add markers to the layer
+      for (const zip in zipClusters) {
+        markerClusterLayer2025.addLayer(zipClusters[zip]);
+      }
+
+      // Add GeoJSON layer with dynamic styling based on marker count
+      const zipCodeGeoJSONLayer2025 = L.geoJSON(null, {
+        style: function (feature) {
+          const zipCode = feature.properties.modzcta; // modzcta is the key for zip code
+          const markerCount = zipMarkerCount[zipCode] || 0;
+
+          // Define a color scale based on marker count
+          let fillColor;
+          if (markerCount > 750) {
+            fillColor = "darkgoldenrod"; // High count
+          } else if (markerCount > 500) {
+            fillColor = "goldenrod"; // Medium count
+          } else if (markerCount > 250) {
+            fillColor = "gold"; // Low count
+          } else if (markerCount > 0) {
+            fillColor = "palegoldenrod"; // Low count
+          } else {
+            fillColor = "lightgoldenrodyellow"; // No markers
+          }
+
+          return {
+            color: "goldenrod", // Border color
+            weight: 1, // Border weight
+            opacity: 0.5, // Border opacity
+            fillColor: fillColor, // Fill color
+            fillOpacity: 0.6, // Fill opacity
+          };
+        },
+        onEachFeature: function (feature, layer) {
+          // Use getElement() to access the DOM element for the layer
+          const element = layer.getElement();
+          if (element) {
+            element.classList.add("Zip-Areas-2025"); // Add the class to the DOM element
+          }
+        },
+        pane: "Zip2025Pane", // Ensure the GeoJSON uses the correct pane
+      });
+
+      // Load GeoJSON shapes for zip codes
+      d3.json("./data/Modified_Zip_Code_Tabulation_Areas_(MODZCTA).geojson").then(
+        function (geojsonData) {
+          zipCodeGeoJSONLayer2025.addData(geojsonData); // Add the GeoJSON data to the layer
+        }
+      );
+
+      // Add the layers to the global overlayLayers object
+      overlayLayers["2025 Rodent Complaints"] = markerClusterLayer2025;
+      overlayLayers["2025 Zip Codes"] = zipCodeGeoJSONLayer2025;
+
+      // Update the layer control
+      layerControl.addOverlay(markerClusterLayer2025, "2025 Rodent Complaints");
+      layerControl.addOverlay(zipCodeGeoJSONLayer2025, "2025 Zip Codes");
+
+      activeLayers.push("2025 Rodent Complaints");
+      activeLayers.push("2025 Zip Codes");
+
+      map.addLayer(markerClusterLayer2025);
+      map.addLayer(zipCodeGeoJSONLayer2025);
+
+      updateTitle(activeLayers);
+
+      map.on('layeradd', function (e) {
+        if (e.layer === markerClusterLayer2025) {
+          activeLayers.push("2025 Rodent Complaints");
+          updateTitle(activeLayers);
+        }
+        if (e.layer === zipCodeGeoJSONLayer2025) {
+          activeLayers.push("2025 Zip Codes");
+          updateTitle(activeLayers);
+        }
+      });
+
+      map.on('layerremove', function (e) {
+        if (e.layer === markerClusterLayer2025) {
+          const index = activeLayers.indexOf("2025 Rodent Complaints");
+          if (index > -1) {
+            activeLayers.splice(index, 1); // Remove from array
+          }
+          updateTitle(activeLayers);
+        }
+        if (e.layer === zipCodeGeoJSONLayer2025) {
+          const index = activeLayers.indexOf("2025 Zip Codes");
+          if (index > -1) {
+            activeLayers.splice(index, 1); // Remove from array
+          }
+          updateTitle(activeLayers);
+        }
+      });
+
+
+    }
+
+
+    const timeSeriesData2025 = d3.rollup(
+      json2025.filter(
+        (d) =>
+          d.borough &&
+          d.borough.toLowerCase() !== "undefined" &&
+          d.borough.toLowerCase() !== "unspecified"
+      ),
+      (v) =>
+        d3.rollup(
+          v,
+          (group) => group.length,
+          (d) => d.borough
+        ),
+      (d) => new Date(d.created_date).getMonth()
+    );
+
+    console.log("2025 Line Chart with Month by Count:", timeSeriesData2025);
+
+    // Array of month names
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Map the numeric months to month names
+    const months = monthNames; // Now 'months' will be an array of month names
+
+    const boroughsLine = Array.from(
+      new Set(
+        json2025
+          .filter(
+            (d) =>
+              d.borough &&
+              d.borough.toLowerCase() !== "undefined" &&
+              d.borough.toLowerCase() !== "unspecified"
+          ) // filter out unwanted boroughs
+          .map((d) => d.borough) // Get all boroughs
+      )
+    );
+
+    // Structure the data for each borough in a format suitable for the line chart
+    const boroughData = boroughsLine.map((borough) => {
+      return {
+        borough,
+        values: months.map((monthName, monthIndex) => {
+          const monthData = timeSeriesData2025.get(monthIndex); // Use monthIndex for rollup
+          return {
+            month: monthName, // Month name, e.g., 'January'
+            count: monthData?.get(borough) || 0, // If no data for a borough in a month, count is 0
+          };
+        }),
+      };
+    });
+
+    const marginLine = { top: 20, right: 20, bottom: 40, left: 40 };
+    const widthLine = parseInt(d3.select("#line-chart").style("width"));
+    const heightLine = parseInt(d3.select("#line-chart").style("height"));
+
+    lineChart
+      .append("text")
+      .attr("class", "rodents-2025")
+      .attr("x", 0)
+      .attr("y", 20)
+      .attr("font-size", 15)
+      .attr("fill", "black")
+      .style("font-weight", "bold")
+      .text("Counts by Borough per Month in 2025");
+
+    // Append the SVG element to the DOM
+    lineChart
+      .select("#line-chart")
+      .append("svg")
+      .attr("class", "rodents-2025")
+      .attr("width", widthLine + marginLine.left + marginLine.right)
+      .attr("height", heightLine + marginLine.top + marginLine.bottom)
+      .append("g")
+      .attr("transform", `translate(${marginLine.left},${marginLine.top})`);
+
+    // Set up the x and y scales
+    const x = d3
+      .scaleBand()
+      .domain(months)
+      .range([marginLine.left, widthLine - marginLine.right])
+      .padding(0.1); // Padding between bars (or in this case, data points)
+
+    const y = d3
+      .scaleLinear()
+      .domain([0, LineYGlobalMax])
+      //    .domain([0, d3.max(boroughData, (d) => d3.max(d.values, (v) => v.count))])
+      .nice()
+      .range([heightLine - marginLine.top, marginLine.bottom]);
+
+    const boroughColorMapping = {
+      MANHATTAN: "#EE352E",
+      BROOKLYN: "#FCCC0A",
+      QUEENS: "#B933AD",
+      BRONX: "#00933C",
+      "STATEN ISLAND": "#0078C6",
+    };
+
+    const color = d3
+      .scaleOrdinal()
+      .domain(Object.keys(boroughColorMapping)) // Use borough names as the domain
+      .range(Object.values(boroughColorMapping)); // Use hex colors as the range
+
+    const lineTooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "stackedTooltip")
+      .style("background-color", "white")
+      .style("padding", "6px 10px")
+      .style("border", "1px solid #ccc")
+      .style("border-radius", "5px")
+      .style("position", "absolute") // Ensure it's absolutely positioned
+      .style("opacity", 0); // Initially hidden
+
+    lineChart
+      .append("g")
+      .attr("class", "x-axis")
+      .attr("class", "rodents-2025")
+      .attr("transform", `translate(0, ${heightLine - marginLine.top})`)
+      .style("font-family", "Lexend Deca")
+      .call(
+        d3.axisBottom(x).tickFormat(function (d) {
+          // Take the first 3 characters of the month name
+          return d.slice(0, 3);
+        })
+      );
+
+    lineChart
+      .append("g")
+      .attr("class", "y-axis")
+      .attr("class", "rodents-2025")
+      .attr("transform", `translate(${marginLine.left}, 0)`)
+      .style("font-family", "Lexend Deca")
+      .call(d3.axisLeft(y));
+
+    // Define the line generator
+    const line = d3
+      .line()
+      .x((d) => x(d.month) + x.bandwidth() / 2) // Position by month
+      .y((d) => y(d.count)); // Position by count
+
+    // Draw lines for each borough
+    boroughData.forEach((borough) => {
+      // Draw the line for the borough
+      lineChart
+        .append("path")
+        .data([borough.values]) // Use the borough's month-count data
+        .attr("class", "line")
+        .attr("class", "rodents-2025")
+        .attr("d", line)
+        .attr("fill", "none")
+        .attr("stroke", color(borough.borough))
+        .attr("stroke-width", 2);
+
+      // Add points (circles) for each month on the line
+      lineChart
+        .selectAll(".point-" + borough.borough)
+        .data(borough.values) // Use the borough's month-count data
+        .enter()
+        .append("circle")
+        .attr("class", "point")
+        .attr("class", "rodents-2025")
+        .attr("cx", (d) => x(d.month) + x.bandwidth() / 2) // Position by month
+        .attr("cy", (d) => y(d.count)) // Position by count
+        .attr("r", 5) // Radius of the points
+        .attr("fill", color(borough.borough)) // Color the points according to the borough
+        .attr("stroke", "white") // White border around the points
+        .attr("stroke-width", 1) // Stroke width for the border
+        .on("mouseover", (event, d) => {
+          // Show the tooltip on hover
+          lineTooltip.style("opacity", 0.9).style("z-index", 6000); // Ensure it's on top
+          lineTooltip
+            .html(
+              `${borough.borough
+                .split(" ")
+                .map(
+                  (word) =>
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                )
+                .join(" ")}<br>${d.month}: ${d3.format(",")(d.count)}`
+            )
+            .style("left", event.pageX + 10 + "px")
+            .style("top", event.pageY + 10 + "px");
+        })
+        .on("mousemove", (event) => {
+          lineTooltip
+            .style("left", `${event.pageX + 10}px`) // Add offset for visibility
+            .style("top", `${event.pageY + 10}px`); // Add offset for visibility
+        })
+        .on("mouseout", () => {
+          lineTooltip.transition().duration(100).style("opacity", 0); // Hide tooltip
+        });
+    });
+
+    // (Optional) Add tooltips to display the exact count on hover
+    lineChart
+      .selectAll(".point")
+      .append("title")
+      .text((d) => `${d.month}: ${d.count}`);
+
+    // Add a legend
+    const legendLine = lineChart
+      .selectAll(".legend")
+      .data(boroughData)
+      .enter()
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+    //console.log(boroughData);
+
+    // Add lines for each borough to the legend
+    legendLine
+      .append("line")
+      .attr("x1", marginLine.left + marginLine.right - 9) // Starting point of the line
+      .attr("x2", marginLine.left + marginLine.right + 12) // Ending point of the line
+      .attr("y1", marginLine.bottom) // Positioning the line vertically (aligned with text)
+      .attr("y2", marginLine.bottom) // Same as y1 to keep it horizontal
+      .attr("stroke", (d) => color(d.borough)) // Set line color based on borough
+      .attr("stroke-width", 2); // Set line width
+
+    legendLine
+      .append("circle")
+      .attr("class", "point")
+      .attr("cx", marginLine.left + marginLine.right + 1.5)
+      .attr("cy", marginLine.bottom)
+      .attr("r", 5) // Radius of the points
+      .attr("fill", (d) => color(d.borough)) // Use 'd' to correctly color the circle based on the borough
+      .attr("stroke", "white") // White border around the points
+      .attr("stroke-width", 1); // Stroke width for the border
+
+    legendLine
+      .append("text")
+      .attr("x", marginLine.left + marginLine.right + 21)
+      .attr("y", marginLine.bottom)
+      .attr("dy", ".35em")
+      .attr("text-anchor", "beginning")
+      .style("font-size", "10px")
+      .text((d) => d.borough);
+
+    const LocationType2025 = d3.rollup(
+      json2025,
+      (v) =>
+        d3.rollup(
+          v,
+          (group) => group.length,
+          (d) => d.descriptor
+        ),
+      (d) => d.location_type
+    );
+
+    console.log("2025 Treemap Location Type and Count:", LocationType2025);
+
+    const root = {
+      name: "Rodent Complaints", // Root level name
+      children: Array.from(LocationType2025.entries()).map(
+        ([locationType, descriptors]) => {
+          // Calculate total value for each locationType
+          const totalValue = Array.from(descriptors.values()).reduce(
+            (sum, count) => sum + count,
+            0
+          );
+
+          return {
+            name: locationType,
+            total: totalValue, // Add the total count here
+            children: Array.from(descriptors.entries()).map(
+              ([descriptor, count]) => ({
+                name: descriptor,
+                value: count,
+              })
+            ),
+          };
+        }
+      ),
+    };
+
+    // console.log("Root for the Tree Map:", root);
+
+    const cheeseTree = d3
+      .select("#tree-map")
+      .append("svg") // Create the SVG element
+      .style("width", `${window.innerWidth / 2}px`)
+      .style("height", `${window.innerHeight / 2 - 90}px`)
+      .attr("class", "rodents-2025");
+
+    const hierarchy = d3
+      .hierarchy(root)
+      .sum((d) => d.value) // Sum the values to calculate the size of each block in the tree map
+      .sort((a, b) => a.value - b.value); // Optional: Sort in descending order by value
+
+    // Step 4: Set up the dimensions for the tree map
+    const marginTree = { top: 40, right: 20, bottom: 40, left: 40 };
+    const widthTree = parseInt(d3.select("#tree-map").style("width"));
+    const heightTree = parseInt(d3.select("#tree-map").style("height"));
+
+    // Step 5: Create the tree map layout
+    const treemap = d3
+      .treemap()
+      .size([widthTree - marginTree.right, heightTree - marginTree.bottom])
+      .padding(1);
+
+    // Step 6: Apply the layout to the hierarchy data
+    treemap(hierarchy);
+
+    const colorScaleTree = d3
+      .scaleLinear()
+      .domain([
+        d3.min(hierarchy.children, (d) => d.value),
+        d3.max(hierarchy.children, (d) => d.value),
+      ]) // Domain based on the min and max value
+      .range(["darkgoldenrod", "palegoldenrod"]); // Color range
+
+    const treeTooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("visibility", "hidden")
+      .style("background", "rgba(0, 0, 0, 0.7)")
+      .style("color", "white")
+      .style("padding", "5px 10px 4px 10px")
+      .style("border-radius", "3px")
+      .style("font-size", "15px")
+      .style("z-index", 6000);
+
+    // Function to show descriptors for a clicked locationType
+    function showDescriptors(locationTypeData) {
+      // Clear the existing chart
+      cheeseTree.selectAll("*").remove();
+
+      // Create a new hierarchy for the descriptors
+      const descriptorHierarchy = d3
+        .hierarchy({
+          name: locationTypeData.data.name, // Keep the locationType name
+          children: locationTypeData.children.map((d) => ({
+            name: d.data.name, // Keep the descriptor name
+            value: d.data.value, // Keep the descriptor value (count)
+          })),
+        })
+        .sum((d) => d.value) // Sum the values to calculate the size of each block
+        .sort((a, b) => a.value - b.value); // Sort by value
+
+      // Apply the treemap layout to the descriptors
+      treemap(descriptorHierarchy);
+
+      cheeseTree
+        .append("text")
+        .attr("x", 0)
+        .attr("y", 30)
+        .attr("font-size", 15)
+        .attr("fill", "black")
+        .style("font-weight", "bold")
+        .text(`Descriptors for ${locationTypeData.data.name}`);
+
+      // Add descriptors to the tree chart
+      const descriptors = cheeseTree
+        .selectAll("g")
+        .data(descriptorHierarchy.leaves()) // Use leaves here to get the actual descriptors
+        .enter()
+        .append("g")
+        .attr("transform", (d) => `translate(${d.x0},${d.y0 + marginTree.top})`);
+
+      // For Tree Chart
+      const TreeDefs = d3
+        .select("#tree-map")
+        .append("defs")
+        .attr("class", "rodents-2025");
+
+      TreeDefs.append("pattern")
+        .attr("id", "cheesePattern-Big-2025") // ID to reference the pattern later for Tree Chart
+        .attr("width", 2)
+        .attr("height", 2)
+        .append("image")
+        .attr("href", "./assets/squareCheese-Big.svg") // Path to the SVG image
+        .attr("width", 1800)
+        .attr("height", 1800);
+
+      const treeDescriptorColors = {
+        "Rat Sighting": "black", // Solid color
+        "Mouse Sighting": "#d1d3d4", // Gray color
+        "Condition Attracting Rodents": "url(#cheesePattern-Big-2025)", // Reference the Tree Chart Pattern
+        "Signs of Rodents": "#f1de00", // Yellow color
+      };
+
+      const TreeColorScale = d3
+        .scaleOrdinal()
+        .domain(Object.keys(treeDescriptorColors)) // Descriptor keys as the domain
+        .range(Object.values(treeDescriptorColors)); // Colors/patterns as the range
+
+      descriptors
+        .append("rect")
+        .attr("width", (d) => d.x1 - d.x0)
+        .attr("height", (d) => d.y1 - d.y0)
+        .attr("fill", (d) => TreeColorScale(d.data.name));
+
+      descriptors
+        .append("text")
+        .attr("x", 5)
+        .attr("y", 15)
+        .attr("font-size", 12)
+        .attr("fill", function (d) {
+          // Apply different colors based on descriptor name
+          switch (d.data.name) {
+            case "Rat Sighting":
+              return "white";
+            default:
+              return "black"; // Default color
+          }
+        })
+        .text((d) => `${d.data.name}: ${d3.format(",")(d.data.value)}`);
+
+      // Optional: Add a "Back" button to go back to the full view
+      cheeseTree
+        .append("text")
+        .attr("x", widthTree - marginTree.left - 3)
+        .attr("y", 30)
+        .attr("font-size", 10)
+        .attr("fill", "goldenrod")
+        .style("cursor", "pointer")
+        .text("Back")
+        .on("click", function () {
+          // Go back to the full view by clearing the chart and redrawing the main treemap
+          cheeseTree.selectAll("*").remove();
+          drawMainTreeMap();
+        });
+    }
+
+    // Redraw the main treemap (locationType level)
+    function drawMainTreeMap() {
+      treemap(hierarchy);
+
+      cheeseTree
+        .append("text")
+        .attr("class", "rodents-2025")
+        .attr("x", 0)
+        .attr("y", 30)
+        .attr("font-size", 15)
+        .attr("fill", "black")
+        .style("font-weight", "bold")
+        .text("Location Type in 2025");
+
+      const locationTypes = cheeseTree
+        .selectAll("g")
+        .data(hierarchy.children)
+        .enter()
+        .append("g")
+        .attr("transform", (d) => `translate(${d.x0},${d.y0 + marginTree.top})`)
+        .on("click", function (event, d) {
+          treeTooltip.style("visibility", "hidden");
+          // When a locationType is clicked, show its descriptors
+          showDescriptors(d);
+        })
+        .on("mouseover", function (event, d) {
+          // Show tooltip on hover
+          treeTooltip
+            .style("visibility", "visible")
+            .html(`${d.data.name}: ${d3.format(",")(d.data.total)}`);
+        })
+        .on("mousemove", function (event) {
+          // Position the tooltip near the mouse pointer
+          treeTooltip
+            .style("top", event.pageY + 10 + "px")
+            .style("left", event.pageX + 10 + "px");
+        })
+        .on("mouseout", function () {
+          // Hide the tooltip when mouse leaves
+          treeTooltip.style("visibility", "hidden");
+        });
+
+      locationTypes
+        .append("rect")
+        .attr("width", (d) => d.x1 - d.x0)
+        .attr("height", (d) => d.y1 - d.y0)
+        .attr("fill", (d) => colorScaleTree(d.value));
+    }
+
+    // Initial drawing of the main treemap
+    drawMainTreeMap();
+
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    console.log("2025 Loaded after delay.");
+
   } catch (error) {
-    console.error("Error in CHEESE function", error);
-  }
-}
-
-
-window.onload = function() {
-
-  // Create the CheesePlatter and CheeseSlices as before
-  const CheesePlatter = d3.select("body").append("div").attr("id", "CheesePlatter");
-  const CheeseSlices = CheesePlatter.append("div").attr("id", "CheeseSlices");
-
-  // Dynamically create 3 dots for the loading animation
-  for (let i = 0; i < 3; i++) {
-    CheeseSlices.append("div").attr("class", "dot");
+    console.error("Error loading or processing data for 2025:", error);
   }
 
-  // Dynamically create the #loading and #content divs if not already present
-  CheeseSlices.append("div").attr("id", "loading").style("display", "none").text("Loading...");
-  CheeseSlices.append("div").attr("id", "content").style("display", "none").text("Cheese plate is ready!");
+})();
 
-  prepareCheesePlatter();
-};
 
-async function prepareCheesePlatter() {
-  try {
-    // Show loading message, hide content
-    document.getElementById('loading').style.display = 'block';
-    document.getElementById('content').style.display = 'none';
 
-    // Wait for the CHEESE() function to finish (which calls all other async functions)
-    await CHEESE();  // Wait until all async data loading is complete
 
-    // Hide loading message and show the actual content
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-    
-  } catch (error) {
-    console.error("Error loading data:", error);
-    // Optionally handle errors and show a failure message
-  }
-} */
+
+
+
 
 
 function updateTitle(layerNames) {
